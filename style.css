@@ -1,0 +1,417 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* MENU */
+
+#menu {
+    background:
+        radial-gradient(circle at center, #333 0%, #111 65%);
+}
+
+.logo {
+    font-size: 90px;
+    animation: bounce 1.5s infinite;
+}
+
+#menu h1 {
+    font-size: 60px;
+    margin-top: 10px;
+    letter-spacing: 5px;
+}
+
+.subtitle {
+    color: #bbb;
+    margin: 10px 0 35px;
+}
+
+.main-btn,
+.menu-btn,
+.danger-btn {
+    width: 260px;
+    padding: 15px;
+    margin: 7px;
+    border: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.main-btn {
+    background: #00d084;
+    color: white;
+    box-shadow: 0 5px 20px rgba(0, 208, 132, .3);
+}
+
+.menu-btn {
+    background: #292929;
+    color: white;
+}
+
+.danger-btn {
+    background: #d63031;
+    color: white;
+}
+
+.main-btn:hover,
+.menu-btn:hover,
+.danger-btn:hover {
+    transform: scale(1.04);
+}
+
+.instructions {
+    margin-top: 25px;
+    color: #888;
+    line-height: 1.8;
+}
+
+/* GAME */
+
+#gameScreen {
+    background: #151515;
+}
+
+.hud {
+    width: min(500px, 95vw);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #222;
+    border-radius: 12px 12px 0 0;
+    font-size: 20px;
+}
+
+#road {
+    width: min(500px, 95vw);
+    height: 75vh;
+    max-height: 700px;
+    min-height: 450px;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #222 0px,
+            #222 20px,
+            #292929 20px,
+            #292929 40px
+        );
+    position: relative;
+    overflow: hidden;
+    border-left: 5px solid #eee;
+    border-right: 5px solid #eee;
+}
+
+/* ROAD LINES */
+
+.road-line {
+    position: absolute;
+    width: 8px;
+    height: 80px;
+    background: white;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: .7;
+}
+
+.line1 {
+    top: -100px;
+}
+
+.line2 {
+    top: 40px;
+}
+
+.line3 {
+    top: 180px;
+}
+
+.line4 {
+    top: 320px;
+}
+
+.line5 {
+    top: 460px;
+}
+
+.line6 {
+    top: 600px;
+}
+
+/* PLAYER */
+
+#player {
+    position: absolute;
+    font-size: 55px;
+    left: 50%;
+    bottom: 25px;
+    transform: translateX(-50%);
+    z-index: 10;
+    user-select: none;
+}
+
+/* ENEMIES */
+
+.enemy {
+    position: absolute;
+    font-size: 52px;
+    z-index: 8;
+    user-select: none;
+}
+
+/* CRASH */
+
+#crashEffect {
+    position: absolute;
+    display: none;
+    font-size: 70px;
+    z-index: 50;
+}
+
+/* CONTROLS */
+
+.mobile-controls {
+    width: min(500px, 95vw);
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+}
+
+.mobile-controls button {
+    width: 110px;
+    height: 60px;
+    border: none;
+    border-radius: 15px;
+    background: #292929;
+    color: white;
+    font-size: 30px;
+    touch-action: none;
+}
+
+/* GAME OVER */
+
+#gameOver {
+    background:
+        radial-gradient(circle, #3a1111, #111 65%);
+}
+
+.gameover-icon {
+    font-size: 80px;
+}
+
+#gameOver h1 {
+    font-size: 45px;
+    margin: 10px;
+}
+
+.result-box {
+    width: 270px;
+    background: #222;
+    padding: 20px;
+    border-radius: 18px;
+    margin: 20px;
+}
+
+.result-box p {
+    color: #aaa;
+    margin-top: 8px;
+}
+
+.result-box strong {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.record {
+    display: none;
+    color: gold;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* HISTORY */
+
+#historyScreen,
+#recordsScreen {
+    background:
+        radial-gradient(circle at top, #292929, #111 70%);
+    padding: 25px;
+    overflow-y: auto;
+}
+
+#historyScreen h1,
+#recordsScreen h1 {
+    margin-bottom: 20px;
+}
+
+.history-list {
+    width: min(600px, 95vw);
+    max-height: 55vh;
+    overflow-y: auto;
+}
+
+.history-item {
+    background: #222;
+    margin: 8px 0;
+    padding: 15px;
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: 45px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.history-rank {
+    font-size: 25px;
+}
+
+.history-score {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.history-info {
+    color: #aaa;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.history-points {
+    color: #00d084;
+    font-weight: bold;
+}
+
+#emptyHistory {
+    color: #777;
+    margin: 20px;
+}
+
+/* RECORD CARDS */
+
+.record-card {
+    width: min(400px, 90vw);
+    padding: 20px;
+    background: #222;
+    border-radius: 18px;
+    margin: 8px;
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.record-card div {
+    font-size: 30px;
+}
+
+.record-card span {
+    color: #aaa;
+    text-align: left;
+}
+
+.record-card strong {
+    font-size: 25px;
+}
+
+/* ANIMATION */
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes crash {
+    0% {
+        transform: scale(.5) rotate(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.3) rotate(15deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(-10deg);
+        opacity: 0;
+    }
+}
+
+.crashing {
+    animation: crash .5s;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    #menu h1 {
+        font-size: 45px;
+    }
+
+    .logo {
+        font-size: 70px;
+    }
+
+    #road {
+        height: 68vh;
+        min-height: 400px;
+    }
+
+    #player {
+        font-size: 48px;
+    }
+
+    .enemy {
+        font-size: 45px;
+    }
+
+    .hud {
+        font-size: 16px;
+    }
+
+    .history-item {
+        grid-template-columns: 35px 1fr auto;
+    }
+}

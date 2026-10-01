@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚗 Né Xe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- MENU -->
+    <section id="menu" class="screen active">
+        <div class="logo">🚗</div>
+        <h1>NÉ XE</h1>
+        <p class="subtitle">Bạn né được bao nhiêu xe?</p>
+
+        <button id="startBtn" class="main-btn">▶ BẮT ĐẦU</button>
+        <button id="historyBtn" class="menu-btn">📜 LỊCH SỬ</button>
+        <button id="recordsBtn" class="menu-btn">🏆 KỶ LỤC</button>
+
+       
+    </section>
+
+    <!-- GAME -->
+    <section id="gameScreen" class="screen">
+
+        <div class="hud">
+            <div>
+                <span>🏆</span>
+                <strong id="score">0</strong>
+            </div>
+
+            <div>
+                <span>🚙</span>
+                <strong id="dodged">0</strong>
+            </div>
+
+            <div>
+                <span id="lives">❤️❤️❤️</span>
+            </div>
+        </div>
+
+        <div id="road">
+
+            <div class="road-line line1"></div>
+            <div class="road-line line2"></div>
+            <div class="road-line line3"></div>
+            <div class="road-line line4"></div>
+            <div class="road-line line5"></div>
+            <div class="road-line line6"></div>
+
+           <div id="player">🧍</div>
+            <div id="enemies"></div>
+
+            <div id="crashEffect">💥</div>
+        </div>
+
+        <div class="mobile-controls">
+            <button id="leftBtn">◀</button>
+            <button id="rightBtn">▶</button>
+        </div>
+
+    </section>
+
+    <!-- GAME OVER -->
+    <section id="gameOver" class="screen">
+
+        <div class="gameover-icon">💥</div>
+
+        <h1>GAME OVER</h1>
+
+        <div class="result-box">
+            <p>Điểm</p>
+            <strong id="finalScore">0</strong>
+
+            <p>Xe đã né</p>
+            <strong id="finalDodged">0</strong>
+
+            <p>Thời gian</p>
+            <strong id="finalTime">00:00</strong>
+        </div>
+
+        <p id="newRecord" class="record">🏆 KỶ LỤC MỚI!</p>
+
+        <button id="restartBtn" class="main-btn">
+            🔄 CHƠI LẠI
+        </button>
+
+        <button id="homeBtn" class="menu-btn">
+            🏠 MENU
+        </button>
+
+    </section>
+
+    <!-- HISTORY -->
+    <section id="historyScreen" class="screen">
+
+        <h1>📜 LỊCH SỬ</h1>
+
+        <div id="historyList" class="history-list"></div>
+
+        <p id="emptyHistory">Chưa có ván chơi nào.</p>
+
+        <button id="clearHistoryBtn" class="danger-btn">
+            🗑️ XÓA LỊCH SỬ
+        </button>
+
+        <button id="historyBackBtn" class="menu-btn">
+            ← QUAY LẠI
+        </button>
+
+    </section>
+
+    <!-- RECORDS -->
+    <section id="recordsScreen" class="screen">
+
+        <h1>🏆 KỶ LỤC</h1>
+
+        <div class="record-card">
+
+            <div>🥇</div>
+            <span>Điểm cao nhất</span>
+            <strong id="bestScore">0</strong>
+
+        </div>
+
+        <div class="record-card">
+
+            <div>🚙</div>
+            <span>Né nhiều nhất</span>
+            <strong id="bestDodged">0</strong>
+
+        </div>
+
+        <div class="record-card">
+
+            <div>⏱️</div>
+            <span>Chơi lâu nhất</span>
+            <strong id="bestTime">00:00</strong>
+
+        </div>
+
+        <button id="recordsBackBtn" class="menu-btn">
+            ← QUAY LẠI
+        </button>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
